@@ -1,10 +1,10 @@
 # Todo List
 - [x] Resposible research session
 - [x] Look at GPT-Neo from hugging face and try to get it traning on a small dataset
-- [ ] Figure out the training stiuation (DefltBlue, Google Colab, My old gpu?)
+- [x] Figure out the training stiuation (DefltBlue, Google Colab, My old gpu?)
 - [x] While GPT-Neo is training, read through papers for this week (marked in zotero)
 - [ ] Look at roBERTa from hugging face and try to get it training 
-- [ ] Try agin following along with Karpathy videos
+- [x] Try agin following along with Karpathy videos
 - [ ] Chose 3 - 5 activations functions to work with and justify the choics
 - [x] Write introduction of the report
 - [ ] Prepeare week 3 presentation, I think I'll go with Activation Functions in Deep Learning: A Comprehensive Survey and Benchmark

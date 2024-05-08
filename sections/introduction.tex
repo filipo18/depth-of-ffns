@@ -1,19 +1,12 @@
 \section{Introduction}
-\begin{itemize}
-\item Introduce the topic and explain why it is important (motivation!). %\emph{How should a scientific paper look like?}
+Over the last three decades, researchers have proposed approximately 400 different activation functions \cite{Kunc2024}, suggesting a vast landscape of possibilities for neural network optimization. Historically, models such as those based on the transformer architecture, introduced in "Attention is All You Need", predominantly utilized Rectified Linear Unit (ReLU). However, the landscape began shifting when other activation functions started being considered.
 
-\item Relate to the most relevant existing work from the literature (use BibTeX), explain their contributions, and (critically) indicate what is still unanswered. 
-%\emph{The existing state of the art describes the setup of general scientific papers, e.g.\ see~\cite{hengl2002rules}, but this may be different for computer science papers.}
+A pivotal moment in the evolution of activation functions in language models was marked by the adoption of the Gaussian Error Linear Unit (GELU), as detailed in "GELU Activation Function in Deep Learning: A Comprehensive Mathematical Analysis and Performance". GELU has become the popular choice for language models and it's also the default activation function RoBERTa and GPT-Neo, implemented by Hugging Face which are the ones I will be using as my baseline. This function's popularity underscores its perceived utility over traditional functions like ReLU in specific contexts, particularly in models with parameters on the scale of hundreds of millions.
 
-\item Explain what the research questions for this work are. 
-This usually is a subset of the unanswered questions. %\emph{The aim of this work is therefore to provide a good template specifically for papers in the field of computer science.}
+Despite these advancements, continuous innovation leads to alternatives like GeGLU, noted for its effectiveness in "Glu variants to improve transformer" also used in last year's winner of the BabyLM challenge[source]. Yet, a significant research gap persists—a comprehensive comparison of multiple activation functions under consistent conditions is notably absent. This gap could be explained by findings from "ReLU Strikes Back", which suggests that the impact of activation functions diminishes as the model size increases, evident in models with over a billion parameters. This also explains the initial move away from ReLU, since all the research on alternatives was done on models with the size of approximately 100 million parameters.
 
-\item Summarize the main contributions/conclusions of this research.
-NB: Make sure the title of the paper is a good match to the main research question / contribution / conclusion.
+Given these insights, this research will explore the impact of various activation functions on smaller-scale language models with around 10 million parameters. The hypothesis posits that at smaller scales, the choice of activation function is crucial, potentially leading to significant performance variations.
 
-\item Briefly indicate how the rest of the paper fits together to answer the research question(s).
-\end{itemize}
+Further, this research will delve into an area of adaptive activation functions. It has been shown that adaptive activation functions outperform static ones in text-to-text machine translation [resource], but there seems to be a lack of further research into adaptive function in language models, likely due to an expected tradeoff between additional trainable parameters and impact on performance. Additionally, recent developments in KAN: Kolmogorov-Arnold Networks [resource] suggest a shift towards using activation functions on edges instead of nodes, but due to its recency, it has yet to be tested on a language model. This research will also experiment with this concept and apply it to language modeling to assess its efficacy at smaller scales.
 
-For a longer research paper, a section with a more elaborate discussion of the literature may follow, but for short (conference) submissions, this is often included in the introduction.
-
-Make sure the introduction and conclusion are easily understandable by everyone with a computer science bachelor (e.g.\ your examiner may have a completely different expertise).
+This paper will structure its discussion starting with a review of historical and current activation functions, followed by methodology, experimental setup, results, and conclusions. By addressing these facets, the study aims to illuminate how different activation functions can enhance or compromise the performance of scaled-down language models, ultimately contributing to the optimization of neural network design.

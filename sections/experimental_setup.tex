@@ -1,0 +1,39 @@
+% Define the research questions clearly. Discuss the specific configurations you have settled on, and
+% elaborate on the data sets you have utilized. Document the evaluation setup and define the metrics.
+% ● 4.1 Research Questions
+% ● 4.2 Dataset
+% ● 4.3 Models
+% ● 4.4 Evaluation Setting and Metrics.
+% Evaluation Metrics: You should mention the components of the BabyLM evaluation pipeline; but can defer
+% explaining each (fine-tune) task in detail to the BLiMP/GLUE/SuperGLUE papers. However, you should
+% describe the process each of these components uses to return a score (i.e. how is the final score
+% computed?)
+% Evaluation Settings: hardware.
+% ● 4.5 Configuration and Implementation Details
+
+\section{Experimental setup}
+** Research Questions **
+- Does choice of activation function matter in smaller language models?
+- sub1: How do adaptable activation functions with learnable parameters compare to their static counterparts?
+- sub2: Does use of KAN network instead of MLP improve performance of smaller language model?
+
+** Dataset ** 
+- tiny stories
+- why tiny storeis and not some other dataset 
+
+** Models ** 
+- Hugging face GPT-NEO as baseline encoder and RoBERTa as baseline decoder
+
+** Other utils ** 
+- %https://github.com/ltgoslo/ltg-bert/blob/main/training/model.py#L14
+- https://github.com/Blealtan/efficient-kan
+- https://pytorch.org/docs/stable/generated/torch.nn.PReLU.html#torch.nn.PReLU
+- http://arxiv.org/abs/1710.05941
+- assumptions or constanst use when applyign kan network and activation functions 
+
+** Hardware ** 
+- A100
+
+** Evaluation ** 
+- BLiMP - %average of ( anaphor_agreement:, argument_structure:, binding:, control_raising, determiner_noun_agreeme, ellipsis:, filler_gap:, irregular_forms:, island_effects:, npi_licensing:, quantifiers:, subject_verb_agreement:)
+- SuperGLUE

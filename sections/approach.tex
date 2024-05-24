@@ -1,3 +1,27 @@
+\clearpage
 \section{Approach}
 
-** Motivate choices of activation functions **
+% ** How am i able to do this **
+% - transfomers from layers
+% - activation functions are used in FFN layer which is implementation of MLP
+
+% ** Motivate choices of activation functions **
+% - to compare activation functions I will take existing Hugging face implementation of GPT-NEO and roBERTa and replace the activation function with the one I want to test
+% - according to \cite{Mirzadeh2023} I want to test how much worse ReLU is, then compare with relu with learnable parameters PReLU
+% - according to [reference to swish paper] I want to test swish, to get baseline start with SiLU then compare with swish 
+% - according to [reference to GeGLU paper] I want to test GeGLU, to get baseline start with GELU then compare with GeGLU
+% - parametrize GELU with learnable to comapre against GELU
+% - lastly to compare KAN network against all of the above 
+
+% ** How to kan **
+% - implementation exists by the authors of the paper 
+% - seems to be running into a bunch of issues and is very slow
+% - using efficient kan impelementation isntead
+% - have to decide on some paratmees grid: int the number of grid intervals and k: the order of piecewise polynomial, will use 3 and 5 based on the paper 
+
+To achieve this, I will leverage transformers, specifically focusing on their layered architecture. Transformers are composed of multiple layers, each playing a crucial role in processing input data and generating meaningful representations. Among these layers, the Feed-Forward Neural Network (FFN) layer is particularly significant. It typically consists of two linear transformations with an activation function in between, effectively forming a simple Multi-Layer Perceptron (MLP). The choice of activation function within these layers is critical as it directly impacts the model's performance and ability to learn complex patterns.
+
+Motivate choices of activation functions
+To explore the effectiveness of various activation functions, I will modify existing implementations of prominent models like GPT-NEO and RoBERTa from the Hugging Face library. According to Mirzadeh et al. (2023), I am interested in evaluating how much worse ReLU performs compared to PReLU, which includes learnable parameters. Additionally, I will test the Swish activation function by starting with SiLU (a baseline version of Swish) and then comparing it to Swish. Furthermore, I will investigate GeGLU by comparing it to the standard GELU activation function. To thoroughly understand the impact, I will also parameterize GELU with learnable components and benchmark it against its standard form. Finally, I will compare these findings against the performance of the KAN network to establish a comprehensive understanding.
+
+The implementation of KAN, as described by the authors of the paper, is available but has shown to be problematic and slow. To address these issues, I will utilize an efficient KAN implementation. This approach requires careful selection of certain parameters, specifically the number of grid intervals (int) and the order of piecewise polynomials (k). Based on recommendations from the paper, I will set these parameters to 3 and 5, respectively. This configuration aims to balance performance and computational efficiency, ensuring that the KAN implementation is both effective and practical for the experiments.

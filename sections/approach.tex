@@ -27,10 +27,22 @@ Transformers are composed of multiple layers, each playing a crucial role in pro
 The activation functions to be evaluated are: ReLU, SiLU, Swish, PReLU, GELU, GEGLU, learnable GELU, and learnable GEGLU. Additionally, the KAN network will be compared against all of these options.
 
 \subsubsection{GELU}
-Currently, the most popular activation function in LLMs is also used as the default activation function in the baseline models GPT-NEO and roBERTa. It is a smooth approximation of ReLU originally defined as \(\text{GELU}(x) = x \cdot \Phi(x)\), where \(\Phi(x)\) is the Cumulative Distribution Function for the Gaussian Distribution. For optimization purposes, it is implemented as \(\text{GELU}(x) = 0.5x \left(1 + \tanh\left(\sqrt{\frac{2}{\pi}} \left(x + 0.044715x^3\right)\right)\right)\) \cite{Hendrycks2023}.
+Currently, the most popular activation function in LLMs is also used as the default activation function in the baseline models GPT-NEO and roBERTa. It is a smooth approximation of ReLU, originally defined as \(\text{GELU}(x) = x \cdot \Phi(x)\), where \(\Phi(x)\) is the Cumulative Distribution Function for the Gaussian Distribution. or optimization purposes, since calculating \(\Phi(x)\) is computatinally expensive, it is instead calculated with the tanh approximation as:
+\(\text{GELU}(x) = 0.5x \left(1 + \tanh\left(\sqrt{\frac{2}{\pi}} \left(x + 0.044715x^3\right)\right)\right)\) \cite{Hendrycks2023}. This function will be used as a baseline for comparison with all other activations.
+[add figure of GELU]
 
 \subsubsection{ReLU and PReLU}
-ReLU was considered state of the art in the time of original transformer paper \cite{Vaswani2017}, but has since been surpassed by other activation functions. I will implement a model 
+\textit{ReLU} was considered state-of-the-art at the time of the original transformer paper \cite{Vaswani2017}, but has since been surpassed by other activation functions. Baseline models are implemented using the PyTorch library, which prvides an implementation for the ReLU activation function [RELU citation from docs], which will be used in this research. 
+
+\[
+\text{ReLU}(x) = \max(0, x)
+\]
+
+This implementation will be used as a baseline for comparison with \textit{PReLU} and \textit{GELU}. The comparison with GELU is motivated by the findings of \citet{Mirzadeh2023}, which suggest that the use of ReLU is acceptable as the impact of activation functions diminishes with increasing model size. This research aims to determine how much worse (if at all) ReLU is compared to GELU when used with smaller models.
+
+
+\textit{PReLU} is a variant of ReLU that includes learnable parameters. This allows the activation function to learn the optimal slope for negative values. The PReLU function is defined as \[\text{PReLU}(x) = \max(0, x) + a \min(0, x)\]
+[add figure of ReLU]
 
 \subsubsection{SiLU and Swish}
 

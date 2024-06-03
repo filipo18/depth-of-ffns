@@ -1,0 +1,45 @@
+\section{Results}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{lcc}
+    \hline
+    \textbf{Model} & \textbf{BLiMP} & \textbf{GLUE} \\
+    \hline
+    BERT-Learnable-GELU-9.0M-2L-4H-512C-1024I & 59.4 & 57.1 \\
+    GPT-Learnable-GELU-9.0M-2L-4H-512C-1024   & 56.782 & 67.62 \\
+    \hline
+    \multicolumn{3}{l}{\textbf{Same baselines}} \\
+    GPT-9.0M-2L-4H-512C-1024I & 55.6 & 57.09 \\
+    BERT-9.0M-2L-4H-512C-1024I & 49.1 & 54.94 \\
+    \hline
+    \multicolumn{3}{l}{\textbf{Best baselines GLUE}} \\
+    GPT-11.0M-3L-4H-512C-1024I-0 & (55.17) & 60.2 \\
+    BERT-11.0M-3L-4H-512C-1024I & (49.49) & 55.41 \\
+    \hline
+    GPT-PReLU-9.0M-2L-4H-512C-1024I & 57.0\% & 57.6 \\
+    BERT-PReLU-9.0M-2L-4H-512C-1024I & 59.2\% & 56.1 \\
+    GPT-SiLU-9.0M-2L-4H-512C-1024I & 56.3\% & 59.9 \\
+    GPT-ReLU-9.0M-2L-4H-512C-1024I & 56.6\% & 59.9 \\
+    BERT-SiLU-9.0M-2L-4H-512C-1024I & 58.3\% & 57.5 \\
+    BERT-ReLU-9.0M-2L-4H-512C-1024I & 58.5\% & 57.2 \\
+    GPT-Swish-9.0M-2L-4H-512C-1024I & 53.7\% & 57.6 \\
+    BERT-Swish-9.0M-2L-4H-512C-1024I & 58.0\% & 57.8 \\
+    BERT-kan2-11.0M-2L-4H-512C-384I & 56.69\% & 63.65\% \\
+    KAN2-GPT-11.0M-2L-4H-512C-256I & 63.43\% & 48.80\% \\
+    \hline
+    \multicolumn{3}{l}{\textbf{Learnable GELU Seeds}} \\
+    GPT-Learnable-GELU-seed4-9.0M-2L-4H-512C-1024I & 56.0\% & 59.2 \\
+    GPT-Learnable-GELU-seed1-9.0M-2L-4H-512C-1024I & 56.3\% & 58.8 \\
+    GPT-Learnable-GELU-seed2-9.0M-2L-4H-512C-1024I & 57.4\% & 58.7 \\
+    BERT-Learnable-GELU-seed4-9.0M-2L-4H-512C-1024I & 58.2\% & 57.0 \\
+    GPT-Learnable-GELU-seed5-9.0M-2L-4H-512C-1024I & 58.3\% & 59.3 \\
+    GPT-Learnable-GELU-seed3-9.0M-2L-4H-512C-1024I & 58.7\% & 59.6 \\
+    BERT-Learnable-GELU-seed3-9.0M-2L-4H-512C-1024I & 59.0\% & 57.0 \\
+    BERT-Learnable-GELU-seed2-9.0M-2L-4H-512C-1024I & 59.3\% & 59.7 \\
+    BERT-Learnable-GELU-seed5-9.0M-2L-4H-512C-1024I & 59.8\% & 59.2 \\
+    BERT-Learnable-GELU-seed1-9.0M-2L-4H-512C-1024I & 59.8\% & 56.2 \\
+    \hline
+    \end{tabular}
+    \caption{Comparison of models across BLiMP and GLUE datasets}
+    \label{tab:comparison}
+    \end{table}

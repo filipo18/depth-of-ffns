@@ -19,27 +19,27 @@
 % - using efficient kan impelementation isntead
 % - have to decide on some paratmees grid: int the number of grid intervals and k: the order of piecewise polynomial, will use 3 and 5 based on the paper 
 
-Transformers are composed of multiple layers, each playing a crucial role in processing input data and generating meaningful representations. Among these layers, the Feed-Forward Neural Network (FFN) layer typically consists of two linear transformations with an activation function in between, effectively forming a simple Multi-Layer Perceptron (MLP). This structure allows the default activation function to be switched out with different activation functions for testing, enabling a direct comparison of their performance while keeping everything else the same. To explore the effectiveness of various activation functions, I will modify existing implementations of prominent models like GPT-NEO and RoBERTa from the Hugging Face library.
+Transformers comprise multiple layers, each crucial in processing input data and generating meaningful representations. Among these layers, the Feed-Forward Neural Network (FFN) layer typically consists of two linear transformations with an activation function in between, effectively forming a simple Multi-Layer Perceptron (MLP). This structure allows the default activation function to be switched out with different activation functions for testing, enabling a direct comparison of their performance while keeping everything else the same. To explore the effectiveness of various activation functions, I will modify existing implementations of prominent models like GPT-NEO and RoBERTa from the Hugging Face library.
 
 \subsection{Choosing activation functions}
 % The activation functions that will be evaluated are the following: ReLU, SiLU, Swish, PReLU, GELU, GEGLU, learnable GELU and learnable GEGLU. Additionaly the KAN network will be compared against all of those options. 
-The activation functions to be evaluated are: ReLU, SiLU, Swish, PReLU, GELU, GEGLU, learnable GELU, and learnable GEGLU. Additionally, the KAN network will be compared against all of these options.
+The activation functions to be evaluated are ReLU, SiLU, Swish, PReLU, GELU, GEGLU, learnable GELU, and learnable GEGLU. Additionally, the KAN network will be compared against all of these options.
 
 \subsubsection{GELU}
-Currently, the most popular activation function in LLMs is also used as the default activation function in the baseline models GPT-NEO and roBERTa. It is a smooth approximation of ReLU, originally defined as \(\text{GELU}(x) = x \cdot \Phi(x)\), where \(\Phi(x)\) is the Cumulative Distribution Function for the Gaussian Distribution. or optimization purposes, since calculating \(\Phi(x)\) is computatinally expensive, it is instead calculated with the tanh approximation as:
+Currently, the most popular activation function in LLMs is also used as the default activation function in the baseline models GPT-NEO and roBERTa. It is a smooth approximation of ReLU, originally defined as \(\text{GELU}(x) = x \cdot \Phi(x)\), where \(\Phi(x)\) is the Cumulative Distribution Function for the Gaussian Distribution. or optimization purposes, since calculating \(\Phi(x)\) is computationally expensive, it is instead calculated with the tanh approximation as:
 \(\text{GELU}(x) = 0.5x \left(1 + \tanh\left(\sqrt{\frac{2}{\pi}} \left(x + 0.044715x^3\right)\right)\right)\) \cite{Hendrycks2023}. This function will be used as a baseline for comparison with all other activations.
 [add figure of GELU]
 
 \subsubsection{ReLU and PReLU}
-\textit{ReLU} was considered state-of-the-art at the time of the original transformer paper \cite{Vaswani2017}, but has since been surpassed by other activation functions. Baseline models are implemented using the PyTorch library, which prvides an implementation for the ReLU activation function [RELU citation from docs], which will be used in this research. 
+\textit{ReLU} was considered state-of-the-art at the time of the original transformer paper \cite{Vaswani2017}, but has since been surpassed by other activation functions. Baseline models are implemented using the PyTorch library, which provides an implementation for the ReLU activation function [RELU citation from docs], which will be used in this research. 
 
 \[
 \text{ReLU}(x) = \max(0, x)
 \]
 
-This implementation will be used as a baseline for comparison with \textit{PReLU} and \textit{GELU}. The comparison with GELU is motivated by the findings of \textit{I. Mirzadeh and Others} \cite{Mirzadeh2023}, which suggest that the use of ReLU is acceptable as the impact of activation functions diminishes with increasing model size. The objective is to determine how much worse (if at all) ReLU is compared to GELU when used with smaller models.
+This implementation will be used as a baseline for comparison with \textit{PReLU} and \textit{GELU}. The comparison with GELU is motivated by the findings of \textit{I. Mirzadeh and Others} \cite{Mirzadeh2023}, which suggests that the use of ReLU is acceptable as the impact of activation functions diminishes with increasing model size. The objective is to determine how much worse (if at all) ReLU is compared to GELU when used with smaller models.
 
-\textit{PReLU} is a variant of ReLU that incorporates learnable parameters, allowing the activation function to adaptively learn the optimal slope for negative values. The PReLU function is available in the PyTorch library [pytorch citation]. It is mathematically defined as
+\textit{PReLU} is a variant of ReLU that incorporates learnable parameters, allowing the activation function to adaptably learn the optimal slope for negative values. The PReLU function is available in the PyTorch library [pytorch citation]. It is mathematically defined as
 
 \[
 \text{PReLU}(x) = \max(0, x) + a \min(0, x)
@@ -49,12 +49,12 @@ where a is a learnable parameter. It takes the \textit{num\_parameters} paramete
 [ADD FIGURE OF RELU]
 
 \subsubsection{SiLU and Swish}
-\textit{SiLU} was initialy evaluated on LLMs in the original GELU paper \cite{Hendrycks2023} but was found to perform worse than the GELU activation fununction. It is defined as 
+\textit{SiLU} was initially evaluated on LLMs in the original GELU paper \cite{Hendrycks2023} but was found to perform worse than the GELU activation function. It is defined as 
 \[
 \text{silu}(x) = x \cdot \sigma(x), \text{ where } \sigma(x) \text{ is the logistic sigmoid.}
 \]
 PyTorch implementation of SiLU was used [cite pytorch silu].
-It will be used only as a baseline comparison for the \textit{Swish} activation function, which is its counterpart with learnable parameter, aiding the objective of exploring the impact of adding learnable parameters to activation functions. 
+It will be used only as a baseline comparison for the \textit{Swish} activation function, which is its counterpart with learnable parameters, aiding the objective of exploring the impact of adding learnable parameters to activation functions. 
 
 \textit{Swish} is a self-gated activation function that was proposed by \textit{Ramachandran et al.} \cite{Ramachandran2017}. It is not available in the PyTorch library so it was implemented as proposed in the paper 
 \[
@@ -65,7 +65,7 @@ where \(\beta\) is a learnable parameter. Using the idea seen in PyTorch PReLU i
 [ADD FIGURE OF SILU]
 
 \subsubsection{Learnable GELU}
-The GELU activation function will be parameterized with learnable parameter. The implementation will be based on the PyTorch GELU implementation with tanh approximation, which, out of the box, does not support learnable parameters. This approach appears to be novel, as no prior research has been found that explores the impact of adding learnable parameters to the GELU activation function. The new GELU activation function adds a learnable parameter as a scaling factor and is defined as follows:
+The GELU activation function will be parameterized with learnable parameters. The implementation will be based on the PyTorch GELU implementation with tanh approximation, which, out of the box, does not support learnable parameters. This approach appears to be novel, as no prior research has been found that explores the impact of adding learnable parameters to the GELU activation function. The new GELU activation function adds a learnable parameter as a scaling factor and is defined as follows:
 
 \[
     0.5 \cdot \beta \cdot \text{input} \cdot \left( 1.0 + \tanh \left( \sqrt{\frac{2.0}{\pi}} \cdot (\text{input} + 0.044715 \cdot \text{input}^3) \right) \right)
@@ -97,7 +97,7 @@ The \textit{Learnable GEGLU} activation function is an enhanced variant of the G
 The objective is to first evaluate the performance of GeGLU compared to GELU, and then to evaluate the performance of Learnable GeGLU compared to GeGLU. The hypothesis is that Learnable GeGLU will be the best-performing activation function.
 
 \subsubsection{KAN-Network}
-The KAN network is a novel activation function that has shown promising results in the literature. The implementation of the KAN network is available but has shown to be problematic and slow. To address these issues, I will utilize an efficient-KAN implementation \cite{efficient-kan}. This approach requires careful selection of certain parameters, specifically the number of grid intervals (int) and the order of piecewise polynomials (k). Based on recommendations from the paper, I will set these parameters to 3 and 5, respectively. This configuration aims to balance performance and computational efficiency, ensuring that the KAN implementation is both effective and practical for the experiments. FFN layers from GPT-NEO and roBERTa both use MLPs in their implementation, which can be directly replaced with efficient-KAN implementation. As KAN netowork adds additional trainable parameters, the intermediate size for GPT-NEO was decreased to 256 and for roBERTa to 384 to keep the number of parameters around 10M as for other models. 
+The KAN network is a novel activation function that has shown promising results in the literature. The implementation of the KAN network is available but has shown to be problematic and slow. To address these issues, I will utilize an efficient-KAN implementation \cite{efficient-kan}. This approach requires careful selection of certain parameters, specifically the number of grid intervals (int) and the order of piecewise polynomials (k). Based on recommendations from the paper, I will set these parameters to 3 and 5, respectively. This configuration aims to balance performance and computational efficiency, ensuring that the KAN implementation is both effective and practical for the experiments. FFN layers from GPT-NEO and roBERTa both use MLPs in their implementation, which can be directly replaced with efficient-KAN implementation. As KAN network adds additional trainable parameters, the intermediate size for GPT-NEO was decreased to 256 and for roBERTa to 384 to keep the number of parameters around 10M as for other models. 
 
 
 The objective is to evaluate the performance of the KAN network compared to the other activation functions and to determine whether it is a viable alternative for LLMs.

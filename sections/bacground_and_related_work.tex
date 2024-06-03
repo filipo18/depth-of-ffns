@@ -9,7 +9,6 @@
 % Further, this research will delve into an area of adaptive activation functions. It has been shown that adaptive activation functions outperform static ones in text-to-text machine translation \cite{Rajanand}, but there seems to be a lack of further research into adaptive function in language models, likely due to an expected tradeoff between additional trainable parameters and impact on performance. Additionally, recent developments in KAN: Kolmogorov-Arnold Networks \cite{Liu2024} suggest a shift towards using activation functions on edges instead of nodes, but due to its recency, it has yet to be tested on a language model. This research will also experiment with this concept and apply it to language modeling to assess its efficacy at smaller scales.
 
 % This paper will structure its discussion starting with a review of historical and current activation functions, followed by methodology, experimental setup, results, and conclusions. By addressing these facets, the study aims to illuminate how different activation functions can enhance or compromise the performance of scaled-down language models, ultimately contributing to the optimization of neural network design.
-\clearpage
 \section{Background and related work}
 % ** Quick explanation of activation functions ** NOTE: Fix up this paragraph
 % - Activation functions are used to introduce non-linearity to neural networks
@@ -46,14 +45,12 @@ The paper suggests that suggests that the impact of activation functions diminis
 Furthermore, another gap appears in the research on activation functions with trainable parameters (adaptible activaition functions). The possible explanation for this could be the tradeoff between additional trainable parameters and performance. However, this was primarily studied in larger models. The only paper found on adaptive activation functions in LLMs is by Rajanand et al. \cite{Rajanand}, which found that adaptive activation functions outperform static ones in text-to-text machine translation [NOTE: add the exact numbers from the paper], a task closely related to language models. This suggests that adaptive activation functions could be beneficial for smaller models, but further research is needed to confirm this hypothesis. Given these insights, this research will explore the impact of various activation functions on smaller-scale language models with around 10 million parameters. Hypothesising that at smaller scales, the choice of activation function is crucial and having learnable parameters could be beneficial.
 
 Kolmogorov-Arnold Networks (KAN) represent a recent development in neural network architecture, where activation functions are applied on edges instead of nodes \cite{Liu2024}. This approach has been shown to outperform traditional neural networks in some tasks, particularly in scientific applications such as solving partial differential equations. However, at the time of this literature review, it has yet to be tested on language models. The primary benefit of KAN is the optimization of activation on each edge using splines. A spline is a piecewise-defined polynomial function used in interpolation and approximation to create smooth curves through a set of points [ADD REFERENCE]. With a spline on each edge, each edge can have its own custom activation function, trained separately and uniquely shaped. In contrast, adaptive activation functions have the same shape but different gradients. Although this comes with the drawback of an increased number of trainable parameters. This research will experiment with applying KAN to language modeling to assess its efficacy at smaller scales, filling the gap in current literature.
-\clearpage
+
 \vspace*{\fill}
-\begin{figure}[hb]
+\begin{figure*}[ht]
     \centering
     \includegraphics[width=\columnwidth * 2]{figures/kan-network.png}
     \caption{KAN vs MLP [3]}
     \label{fig:your-label}
-\end{figure}
+\end{figure*}
 \vspace*{\fill}
-
-\clearpage

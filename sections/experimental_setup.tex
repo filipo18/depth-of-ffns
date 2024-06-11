@@ -33,12 +33,10 @@ We used the BabyLM evaluation pipeline \cite{Warstadt2023} to evaluate the model
 
 \subsubsection{Statistical significance testing}
 \textbf{TODO: Make this section more reader friendly.} \\
-The following section justifies the choices made for the statistical significance testing, based and summarised from The Hitchhiker’s Guide to Testing Statistical Significance in Natural Language Processing \cite{dror2018hitchhikers}. \\
-Since the distribution of the test statistic is not known, we had to choose approaches from non parametric family of approaches. Which is split in two categories. Sampling based tests and sampling free tests.
+To ensure the results are statistically significant, we trained each model 6 times with diffrent seeds. The following section justifies the choices made for the statistical significance testing, based and summarised from The Hitchhiker’s Guide to Testing Statistical Significance in Natural Language Processing \cite{dror2018hitchhikers}. \\
+Since the distribution of the test statistic is not known, we had to choose approaches from non parametric family of approaches. Which is split in two categories. Sampling based tests and sampling free tests. Sampling free tests hold less statistical power, therefore we decided to use sampling based tests.
 \\\\
-Sampling free tests are computationally less expensive but do not consider evaluation meausre values, only higher level statisics such as the number of cases in which each of the models perorms better than the other. Therefore they have less statistical power. Of those tests, Wilcoxon signed-rank test is the most powerful one as it makes use of ranking the differences between the test scores. Thats why we used it in our experiments. Its null hypothesis is that the differences are symmetrically distributed around zero. Absolute values of the differences are ranked and the sum of the ranks of the positive differences is compared to the sum of the ranks of the negative differences. The test is one-sided, as we are interested in the direction of the difference.
-\\\\
-Sampling based tests compensate for the lack of distribution information with resampling. They are computationally more expensive, but can be less effective for smaller sets of results. We used bootstrapping as a sampling based test. It is a resampling method that involves drawing samples with replacement from the original results. These samples are used to approximate the distribution of the statistic. The p-value is calculated as the proportion of the samples in which the statisic is greater than the observed value. We used 1000 samples for bootstrapping in our experiments.\\
+Sampling based tests compensate for the lack of distribution information with resampling. They are computationally more expensive, but can be less effective for smaller sets of results. We used bootstrapping as a sampling based test. It is a resampling method that involves drawing samples with replacement from the original results. These samples are used to approximate the distribution of the statistic. We use that to calculate mean difference between the two models being compared and confidence intervals of the results. We used 10 000 samples for bootstrapping in our experiments. The exact implementation used, available in the replication package [TODO: ref].
 
 \subsection{Hardware}
 All the models were trained and evaluated on a single NVIDIA A100 GPU with 4 CPUs and 24GB of memory on DelftBlue cluster.
@@ -47,16 +45,16 @@ All the models were trained and evaluated on a single NVIDIA A100 GPU with 4 CPU
 
 \begin{table*}[h!]
     \centering
-    \begin{tabular}{|l|c|c|}
+    \begin{tabular}{lrrrrr}
     \hline
-    \textbf{Parameter} & \textbf{GPT Neo} & \textbf{RoBERTa} \\ \hline
-    \textbf{Embedding Parameters} & & \\ \hline
+    \toprule \textbf{Parameter} & \textbf{GPT Neo} & \textbf{RoBERTa} \\ \hline
+    \toprule \textbf{Embedding Parameters} & & \\ \hline
     Vocab Size & 10,000 & 10,000 \\ \hline
     Hidden Size & 512 & 512 \\ \hline
     Max Position Embeddings & 512 & 513 \\ \hline
-    \textbf{Blocks (Attention \& FFN)} & & \\ \hline
+    \toprule \textbf{Blocks (Attention \& FFN)} & & \\ \hline
     Number of Layers & 2 & 2 \\ \hline
-    Attention Types & [[["global", "local"], 1]] & N/A \\ \hline
+    Attention Types & global and local & global \\ \hline
     Number of Attention Heads & 4 & 4 \\ \hline
     Window Size & 256 & N/A \\ \hline
     Intermediate Size & 1024 \textbf{(256 for KAN-MLP)} & 1024 \textbf{(384 for KAN-MLP)} \\ \hline

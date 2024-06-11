@@ -1,0 +1,47 @@
+\section{Appendix}
+\label{Appendix}
+%If the table is too wide, replace \begin{table}[!htp]...\end{table} with
+%\begin{adjustwidth}{-2.5 cm}{-2.5 cm}\centering\begin{threeparttable}[!htb]...\end{threeparttable}\end{adjustwidth}
+\begin{table}[!htp]\centering
+    \caption{All evaluation results}\label{table:all-results}
+    \scriptsize
+    \begin{tabular}{lrrrrr}\toprule
+    \textbf{Model} &\textbf{Seed} &\textbf{Blimp} &\textbf{Glue} &\textbf{Time} \\\cmidrule{1-5}
+    BERT Baseline GELU &42 &54.94 &49.22 & \\
+    BERT Baseline GELU &2 &59.5 &59.9 &1h 41m 32s \\
+    BERT Baseline GELU &3 &59.6 &56.6 &1h 41m 4s \\
+    BERT Baseline GELU &4 &59.3 &57 &1h 41m 5s \\
+    BERT Baseline GELU &5 &59.1 &57.5 &1h 42m 21s \\
+    GPT Baseline GELU &42 &59.05 &58.22 & \\
+    GPT Baseline GELU &1 &58 &58.5 &1h 43m 35s \\
+    GPT Baseline GELU &2 &56.6 &57.8 &1h 45m 19s \\
+    GPT Baseline GELU &3 &56.6 &59.1 &1h 41m 44s \\
+    GPT Baseline GELU &4 &59.2 &60.5 &1h 40m 12s \\
+    GPT Baseline GELU &5 &57.4 &59.6 &1h 42m 32s \\
+    BERT Learnable GELU &42 &59.4 &57.1 &1h 58m 39s \\
+    BERT Learnable GELU &1 &59.8 &56.2 &1h 45m 56s \\
+    BERT Learnable GELU &2 &59.3 &59.7 &1h 45m 55s \\
+    BERT Learnable GELU &3 &59 &57 &1h 45m 35s \\
+    BERT Learnable GELU &4 &58.2 &57 &1h 45m 56s \\
+    BERT Learnable GELU &5 &59.8 &59.2 &1h 45m 39s \\
+    GPT Learnable GELU &42 &56.8 &60.2 &1h 43m 41s \\
+    GPT Learnable GELU &1 &56.3 &58.8 &1h 41m 26s \\
+    GPT Learnable GELU &2 &57.4 &58.7 &1h 42m 53s \\
+    GPT Learnable GELU &3 &58.7 &59.6 &1h 41m 11s \\
+    GPT Learnable GELU &4 &56 &59.2 &1h 41m 27s \\
+    GPT Learnable GELU &5 &58.3 &59.3 &1h 41m 19s \\
+    BERT ReLU &42 &58.5 &57.2 &2h 24m 46s \\
+    GPT ReLU &42 &56.6 &59.9 &2h 17m 4s \\
+    BERT SiLU &42 &58.3 &57.5 &1h 45m 4s \\
+    GPT SiLU &42 &56.3 &59.9 &1h 39m 35s \\
+    BERT Swish &42 &58 &57.8 &1h 43m 8s \\
+    GPT Swish &42 &53.7 &57.6 &1h 39m 22s \\
+    BERT PReLU &42 &57 &57.6 &1h 47m 27s \\
+    GPT PReLU &42 &59.2 &56.1 &1h 42m 28s \\
+    BERT KAN &42 &56.69 &63.65 &2h 52m 11s \\
+    GPT KAN &42 &63.43 &48.8 &3h 23m 35s \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+
+\end{document}

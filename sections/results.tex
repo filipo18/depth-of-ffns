@@ -5,12 +5,12 @@
 % ReLU with GeLu
 \section{Results} % PAST TENSE!!!
 \label{sec:results}
-\textbf{ToDo: Fix the postition of all those tables bellow.}
+\textbf{ToDo: Fix the position of all those tables bellow.}
 All results of evaluations on BLiMP and GLUE datasets are shown in Table \ref{table:all-results}.\\
-After performing bootstrap resampling for 10 000 samples, we calculated the mean difference and confidence interval to make each of the comparisons mentioned in section \ref{sec:experimental_setup}.\\
-Comparison of Baseline (GELU) model with Adaptive GELU model showed that the mean difference is negative for both BLiMP and GLUE benchmarks, showing that the Adaptive GELU model performed slightly better than the Baseline (GELU) model. However the confidence intervals for both benchmarks contain zero, which means that the difference is not statistically significant. The results are shown in Table \ref{tab:comparison}.\\\\
-Boostrap comparing static activations ReLU and SiLU with their adaptive counterparts PReLU and Swish showed that the mean difference is positive for both BLiMP and GLUE benchmarks, showing that the static activation functions performed slightly better than the adaptive activation functions. However the confidence intervals for both benchmarks contain zero, which means that the difference is not statistically significant. The results are shown in Table \ref{tab:comparison-static-adaptive}.\\\\
-The highest GLUE score was achieved by the BERT-KAN model with 63.65, the highest BLiMP score was achevied by the GPT-KAN model with 63.43. \textbf{ToDo: Further discuss after all statistical tests are done.}\\\\
+After performing bootstrap resampling for 10,000 samples, we calculated the mean difference and confidence interval to make each of the comparisons mentioned in section \ref{sec:experimental_setup}.\\
+Comparison of the Baseline (GELU) model with the Adaptive GELU model showed that the mean difference is negative for both BLiMP and GLUE benchmarks, showing that the Adaptive GELU model performed slightly better than the Baseline (GELU) model. However, the confidence intervals for both benchmarks contain zero, which means that the difference is not statistically significant. The results are shown in Table \ref{tab:comparison}.\\\\
+Boostrap comparing static activations ReLU and SiLU with their adaptive counterparts PReLU and Swish showed that the mean difference is positive for both BLiMP and GLUE benchmarks, showing that the static activation functions performed slightly better than the adaptive activation functions. However, the confidence intervals for both benchmarks contain zero, which means that the difference is not statistically significant. The results are shown in Table \ref{tab:comparison-static-adaptive}.\\\\
+The highest GLUE score was achieved by the BERT-KAN model with 63.65, and the highest BLiMP score was achevied by the GPT-KAN model with 63.43. \textbf{ToDo: Further discuss after all statistical tests are done.}\\\\
 Across all models, the training times were relatively consistent, with two outliers: KAN network models and ReLU models. The prolonged training time for the ReLU models might be attributed to the busy DelftBlue nodes, whereas the extended time for the KAN models is expected. We will compute the standard deviations for all models once we obtain all the results. Excluding the two outliers, the standard deviation in training times was 3 minutes and 33 seconds.
 
 %Please add the following packages if necessary:

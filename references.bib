@@ -68,9 +68,14 @@
   doi       = {10.48550/arXiv.2404.19756}
 }
 
-@misc{Rajanand,
+@article{Rajanand,
   author    = {A. Rajanand and P. Singh},
-  title     = {ErfReLU: Adaptive Activation Function for Deep Neural Network}
+  title     = {ErfReLU: Adaptive Activation Function for Deep Neural Network},
+  journal   = {arXiv 2306.01822},
+  year      = {2023},
+  month     = {Jun},
+  day       = {02},
+  doi       = {10.48550/arXiv.2306.01822}
 }
 
 @article{Mirzadeh2023,
@@ -136,7 +141,7 @@
 @article{Warstadt2023,
   author    = {A. Warstadt and L. Choshen and A. Mueller and A. Williams and E. Wilcox and C. Zhuang},
   title     = {Call for Papers -- The BabyLM Challenge: Sample-efficient pretraining on a developmentally plausible corpus},
-  journal   = {arXiv},
+  journal   = {arXiv 2301.11796},
   year      = {2023},
   month     = {January},
   day       = {27},
@@ -147,7 +152,7 @@
 @article{Eldan2023,
   author    = {R. Eldan and Y. Li},
   title     = {TinyStories: How Small Can Language Models Be and Still Speak Coherent English?},
-  journal   = {arXiv},
+  journal   = {arXiv 2305.07759},
   year      = {2023},
   month     = {May},
   day       = {24},
@@ -159,16 +164,14 @@
   author    = {Hugging Face},
   title     = {GPT Neo},
   year      = {2024},
-  url       = {https://huggingface.co/docs/transformers/en/model_doc/gpt_neo},
-  note      = {Accessed: Jun. 03, 2024}
+  note      = {Accessed: Jun. 03, 2024 \url{https://huggingface.co/docs/transformers/en/model_doc/gpt_neo}}
 }
 
 @misc{huggingfaceRoberta,
   author    = {Hugging Face},
   title     = {RoBERTa},
   year      = {2024},
-  url       = {https://huggingface.co/docs/transformers/en/model_doc/roberta},
-  note      = {Accessed: Jun. 03, 2024}
+  note      = {Accessed: Jun. 03, 2024 \url{https://huggingface.co/docs/transformers/en/model_doc/roberta}}
 }
 
 @inproceedings{warstadt-etal-2023-findings,
@@ -291,31 +294,31 @@
 }
 
 
-@misc{chaudhuri_b-splines_2021,
+@article{chaudhuri_b-splines_2021,
 	title = {B-Splines},
 	url = {http://arxiv.org/abs/2108.06617},
 	doi = {10.48550/arXiv.2108.06617},
 	abstract = {{BSplines} are one of the most promising curves in computer graphics. They are blessed with some superior geometric properties which make them an ideal candidate for several applications in computer aided design industry. In this article, some basic properties of B-Spline curves are presented. Two significant B-Spline properties viz convex hull property and repeated points effects are discussed. The {BSplines} computation in computational devices is also illustrated. An industry application based on image processing where B-Spline curve reconstructs the 3D surfaces for {CT} image datasets of inner organs further highlights the strength of these curves},
-	number = {{arXiv}:2108.06617},
+	journal = {{arXiv}:2108.06617},
 	publisher = {{arXiv}},
 	author = {Chaudhuri, Arindam},
 	urldate = {2024-06-11},
-	date = {2021-08-14},
+	year = {2021},
 	eprinttype = {arxiv},
 	eprint = {2108.06617 [cs]},
 	keywords = {Computer Science - Computer Vision and Pattern Recognition},
 }
 
-@misc{geva_transformer_2022,
+@article{geva_transformer_2022,
 	title = {Transformer Feed-Forward Layers Build Predictions by Promoting Concepts in the Vocabulary Space},
 	url = {http://arxiv.org/abs/2203.14680},
 	doi = {10.48550/arXiv.2203.14680},
 	abstract = {Transformer-based language models ({LMs}) are at the core of modern {NLP}, but their internal prediction construction process is opaque and largely not understood. In this work, we make a substantial step towards unveiling this underlying prediction process, by reverse-engineering the operation of the feed-forward network ({FFN}) layers, one of the building blocks of transformer models. We view the token representation as a changing distribution over the vocabulary, and the output from each {FFN} layer as an additive update to that distribution. Then, we analyze the {FFN} updates in the vocabulary space, showing that each update can be decomposed to sub-updates corresponding to single {FFN} parameter vectors, each promoting concepts that are often human-interpretable. We then leverage these findings for controlling {LM} predictions, where we reduce the toxicity of {GPT}2 by almost 50\%, and for improving computation efficiency with a simple early exit rule, saving 20\% of computation on average.},
-	number = {{arXiv}:2203.14680},
+	journal = {{arXiv}:2203.14680},
 	publisher = {{arXiv}},
 	author = {Geva, Mor and Caciularu, Avi and Wang, Kevin Ro and Goldberg, Yoav},
 	urldate = {2024-06-11},
-	date = {2022-10-12},
+	year = {2022},
 	eprinttype = {arxiv},
 	eprint = {2203.14680 [cs]},
 	keywords = {Computer Science - Computation and Language},
@@ -329,17 +332,17 @@ howpublished = {\url{https://www.tudelft.nl/dhpc/ark:/44463/DelftBluePhase2}},
 ark = {ark:/44463/DelftBluePhase2}
 }
 
-@misc{eger_is_2019,
+@article{eger_is_2019,
 	title = {Is it Time to Swish? Comparing Deep Learning Activation Functions Across {NLP} tasks},
 	url = {http://arxiv.org/abs/1901.02671},
 	doi = {10.48550/arXiv.1901.02671},
 	shorttitle = {Is it Time to Swish?},
 	abstract = {Activation functions play a crucial role in neural networks because they are the nonlinearities which have been attributed to the success story of deep learning. One of the currently most popular activation functions is {ReLU}, but several competitors have recently been proposed or 'discovered', including {LReLU} functions and swish. While most works compare newly proposed activation functions on few tasks (usually from image classification) and against few competitors (usually {ReLU}), we perform the first large-scale comparison of 21 activation functions across eight different {NLP} tasks. We find that a largely unknown activation function performs most stably across all tasks, the so-called penalized tanh function. We also show that it can successfully replace the sigmoid and tanh gates in {LSTM} cells, leading to a 2 percentage point (pp) improvement over the standard choices on a challenging {NLP} task.},
-	number = {{arXiv}:1901.02671},
+	journal = {{arXiv}:1901.02671},
 	publisher = {{arXiv}},
 	author = {Eger, Steffen and Youssef, Paul and Gurevych, Iryna},
 	urldate = {2024-04-25},
-	date = {2019-01-09},
+	year = {2019},
 	eprinttype = {arxiv},
 	eprint = {1901.02671 [cs]},
 }

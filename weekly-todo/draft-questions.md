@@ -1,16 +1,6 @@
-Questions
-- for the repo i used for kan i also put it in footnote, that good?
-- check figure citation
-- check if aral cited correctly in epeprimental sentup
-- how/where to cite replication package
-
-Smaller questions
-- how to cite figures correctly?
-
 TODO:
-- talk about kan implementation and interpretability, from implementtion desctibtion we loose the interpretability of the model
-- talk about not converging epoch
-- cite whats from aral, cite that metrics description is from aral
-- add reasoning for roberta and neo
+- for construct validity check abstracts of glue super glue and blimp papers and explain how they are non linear and complicated, at some point they were just beaten by the models,
+- talk how differences in my scroes are similar to what the papers i referenced were getting, but they didnt do statistics, my scores were sitll better for adaptive functions compared to non adaptive functions 
 - add contributions to introduction
-- cite aral in experimental setup 
+- talk about shape of activation functions, if no activation results interesting
+- add conclusions

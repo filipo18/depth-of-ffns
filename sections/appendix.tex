@@ -1,23 +1,73 @@
+\newpage
 \section{Appendix}
 \label{Appendix}
 %If the table is too wide, replace \begin{table}[!htp]...\end{table} with
 %\begin{adjustwidth}{-2.5 cm}{-2.5 cm}\centering\begin{threeparttable}[!htb]...\end{threeparttable}\end{adjustwidth}
+
 \begin{table}[!htp]\centering
-    \caption{All evaluation results}\label{table:all-results}
+    \caption{Bootstraped means of GLUE and BLiMP with 95\% confidence intervals}
+    \label{tab:bootstraped-means }
+    \scriptsize
+    \begin{tabular}{lrrrrr}\toprule
+    Model &Glue Mean &95\% CI Glue &Blimp Mean &95\% CI Blimp \\\cmidrule{1-5}
+    BERT Baseline (GELU) &57.44 &[56.52, 58.73] &58.48 &[56.68, 59.5] \\
+    BERT Learnable GELU &57.69 &[56.75, 58.73] &59.25 &[58.78, 59.65] \\
+    GPT Baseline (GELU) &58.95 &[58.27, 59.7] &57.82 &[56.97, 58.68] \\
+    GPT Learnable GELU &59.30 &[58.92, 59.73] &57.24 &[56.47, 58.03] \\
+    BERT ReLU &57.91 &[56.98, 58.87] &58.40 &[57.37, 59.23] \\
+    BERT PReLU &58.58 &[57.67, 59.28] &58.37 &[57.70, 59.05] \\
+    GPT ReLU &59.41 &[59.0, 59.82] &56.91 &[55.93, 57.8] \\
+    GPT PReLU &58.83 &[57.6, 59.82] &57.60 &[56.34, 58.83] \\
+    BERT SiLU &57.54 &[57.15, 58.1] &59.16 &[58.75, 59.53] \\
+    BERT Swish &57.89 &[57.28, 58,48] &58.26 &[57.71, 58.75] \\
+    GPT SiLU &59.05 &[58.4, 59.63] &57.25 &[56.43, 58.2] \\
+    GPT Swish &58.36 &[57.95, 58,78] &55.64 &[54.68, 56.64] \\
+    GPT KAN &55.15 &[52.54, 56.73] &55.38 &[53.68, 56.47] \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+    
+    \begin{table}[!htp]\centering
+        \caption{Average pre-train times and standard devitations for all the models. \textit{Note:} \textbf{*} \textit{indicates models that were trained on V100s instead of A100s due to time constraints and DelftBlue cluster availability.}}
+        \label{tab:average-times}
+        \scriptsize
+        \begin{tabular}{lrr}\toprule
+        Model &Avg. Train. Time \\ \cmidrule{1-2}
+        BERT Baseline (GELU) &1h 41m 27s ± 32s \\
+        BERT Learnable GELU &1h 47m 56s ± 313s \\
+        GPT Baseline (GELU) &1h 42m 41s ± 103s \\
+        GPT Learnable GELU &1h 41m 59s ± 102s \\
+        *BERT ReLU &2h 25m 23s ± 147s \\
+        BERT PReLU &1h 46m 11s ± 46s \\
+        *GPT ReLU &2h 20m 27s ± 203s \\
+        GPT PReLU &1h 41m 23s ± 40s \\
+        BERT SiLU &1h 43m 50s ± 268s \\
+        *BERT Swish &2h 20m 4s ± 1086s \\
+        GPT SiLU &1h 39m 7s ± 270s \\
+        *GPT Swish &2h 31m 4s ± 1032s \\
+        *GPT KAN &3h 58m 11s ± 2663s \\
+        \bottomrule
+        \end{tabular}
+        \end{table}
+
+
+\begin{table}[!htp]\centering
+    \caption{Pre-Train times, BLiMP and GLUE scores for all the modes. \textit{Note:} \textbf{*} \textit{indicates models that were trained on V100s instead of A100s due to time constraints and DelftBlue cluster availability.}}
+    \label{tab:all-results }
     \scriptsize
     \begin{tabular}{lrrrrr}\toprule
     \textbf{Model} &\textbf{Seed} &\textbf{Blimp} &\textbf{Glue} &\textbf{Time} \\\cmidrule{1-5}
-    BERT Baseline GELU &42 &54.94 &49.22 & \\
-    BERT Baseline GELU &2 &59.5 &59.9 &1h 41m 32s \\
-    BERT Baseline GELU &3 &59.6 &56.6 &1h 41m 4s \\
-    BERT Baseline GELU &4 &59.3 &57 &1h 41m 5s \\
-    BERT Baseline GELU &5 &59.1 &57.5 &1h 42m 21s \\
-    GPT Baseline GELU &42 &59.05 &58.22 & \\
-    GPT Baseline GELU &1 &58 &58.5 &1h 43m 35s \\
-    GPT Baseline GELU &2 &56.6 &57.8 &1h 45m 19s \\
-    GPT Baseline GELU &3 &56.6 &59.1 &1h 41m 44s \\
-    GPT Baseline GELU &4 &59.2 &60.5 &1h 40m 12s \\
-    GPT Baseline GELU &5 &57.4 &59.6 &1h 42m 32s \\
+    BERT Baseline (GELU) &42 &54.94 &49.22 &1h 41m 16s \\
+    BERT Baseline (GELU) &2 &59.5 &59.9 &1h 41m 32s \\
+    BERT Baseline (GELU) &3 &59.6 &56.6 &1h 41m 4s \\
+    BERT Baseline (GELU) &4 &59.3 &57 &1h 41m 5s \\
+    BERT Baseline (GELU) &5 &59.1 &57.5 &1h 42m 21s \\
+    GPT Baseline (GELU) &42 &59.05 &58.22 &1h 42m 44s \\
+    GPT Baseline (GELU) &1 &58 &58.5 &1h 43m 35s \\
+    GPT Baseline (GELU) &2 &56.6 &57.8 &1h 45m 19s \\
+    GPT Baseline (GELU) &3 &56.6 &59.1 &1h 41m 44s \\
+    GPT Baseline (GELU) &4 &59.2 &60.5 &1h 40m 12s \\
+    GPT Baseline (GELU) &5 &57.4 &59.6 &1h 42m 32s \\
     BERT Learnable GELU &42 &59.4 &57.1 &1h 58m 39s \\
     BERT Learnable GELU &1 &59.8 &56.2 &1h 45m 56s \\
     BERT Learnable GELU &2 &59.3 &59.7 &1h 45m 55s \\
@@ -30,16 +80,60 @@
     GPT Learnable GELU &3 &58.7 &59.6 &1h 41m 11s \\
     GPT Learnable GELU &4 &56 &59.2 &1h 41m 27s \\
     GPT Learnable GELU &5 &58.3 &59.3 &1h 41m 19s \\
-    BERT ReLU &42 &58.5 &57.2 &2h 24m 46s \\
-    GPT ReLU &42 &56.6 &59.9 &2h 17m 4s \\
+    *BERT ReLU &42 &58.5 &57.2 &2h 24m 46s \\
+    *BERT ReLU &1 &58 &58.7 &2h 22m 40s \\
+    *BERT ReLU &2 &56.1 &59.6 &2h 25m 13s \\
+    *BERT ReLU &3 &59.2 &56.3 &2h 25m 51s \\
+    *BERT ReLU &4 &58.7 &58.8 &2h 29m 52s \\
+    *BERT ReLU &5 &59.9 &56.8 &2h 23m 59s \\
+    *GPT ReLU &42 &56.6 &59.9 &2h 17m 4s \\
+    *GPT ReLU &1 &58.5 &58.7 &2h 16m 42s \\
+    *GPT ReLU &2 &56.1 &59.6 &2h 21m 34s \\
+    *GPT ReLU &3 &57.4 &59.3 &2h 20m 47s \\
+    *GPT ReLU &4 &55 &58.9 &2h 25m 58s \\
+    *GPT ReLU &5 &57.9 &60.1 &2h 20m 39s \\
     BERT SiLU &42 &58.3 &57.5 &1h 45m 4s \\
+    BERT SiLU &1 &58.9 &58.9 &1h 41m 41s \\
+    BERT SiLU &2 &59.8 &57.4 &1h 52m 26s \\
+    BERT SiLU &3 &59.6 &57.1 &1h 41m 40s \\
+    BERT SiLU &4 &59 &57.3 &1h 40m 43s \\
+    BERT SiLU &5 &59.4 &57 &1h 41m 26s \\
     GPT SiLU &42 &56.3 &59.9 &1h 39m 35s \\
+    GPT SiLU &1 &59.3 &57.7 &1h 37m 5s \\
+    GPT SiLU &2 &55.9 &58.5 &1h 48m \\
+    GPT SiLU &3 &57.9 &59.7 &1h 36m 55s \\
+    GPT SiLU &4 &57.2 &58.9 &1h 37m \\
+    GPT SiLU &5 &56.9 &59.6 &1h 36m 7s \\
     BERT Swish &42 &58 &57.8 &1h 43m 8s \\
+    *BERT Swish &1 &57.7 &57.3 &2h 26m 13s \\
+    *BERT Swish &2 &57.2 &58.9 &2h 27m 10s \\
+    *BERT Swish &3 &58.9 &56.8 &2h 27m 48s \\
+    *BERT Swish &4 &59 &58.8 &2h 28m 27s \\
+    *BERT Swish &5 &58.8 &57.7 &2h 27m 39s \\
     GPT Swish &42 &53.7 &57.6 &1h 39m 22s \\
+    *GPT Swish &1 &55 &58.6 &2h 19m 34s \\
+    *GPT Swish &2 &56 &59.2 &2h 20m 51s \\
+    *GPT Swish &3 &56.4 &57.9 &2h 21m 43s \\
+    *GPT Swish &4 &57.2 &57.8 &2h 21m 30s \\
+    *GPT Swish &5 &55.6 &59 &2h 23m 24s \\
     BERT PReLU &42 &57 &57.6 &1h 47m 27s \\
+    BERT PReLU &1 &59.8 &59.6 &1h 45m 25s \\
+    BERT PReLU &2 &58.2 &58.1 &1h 45m 30s \\
+    BERT PReLU &3 &58.7 &56.9 &1h 46m 37s \\
+    BERT PReLU &4 &58 &59.5 &1h 45m 54s \\
+    BERT PReLU &5 &58.5 &59.8 &1h 46m 14s \\
     GPT PReLU &42 &59.2 &56.1 &1h 42m 28s \\
-    BERT KAN &42 &56.69 &63.65 &2h 52m 11s \\
+    GPT PReLU &1 &56.2 &59.1 &1h 41m 7s \\
+    GPT PReLU &2 &55.5 &60.5 &1h 40m 40s \\
+    GPT PReLU &3 &56.6 &59.5 &1h 41m 50s \\
+    GPT PReLU &4 &59.6 &58.2 &1h 40m 48s \\
+    GPT PReLU &5 &58.5 &59.6 &1h 41m 24s \\
     GPT KAN &42 &63.43 &48.8 &3h 23m 35s \\
+    *GPT KAN &1 &52.7 &56.5 &3h 22m 36s \\
+    *GPT KAN &2 &53.8 &56.6 &4h 54m 37s \\
+    GPT KAN &3 &54.9 &57 &4h 52m 29s \\
+    GPT KAN &4 &54.2 &55.4 &3h 23m 10s \\
+    GPT KAN &5 &53.2 &56.7 &3h 52m 41s \\
     \bottomrule
     \end{tabular}
     \end{table}

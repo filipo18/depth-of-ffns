@@ -1,8 +1,7 @@
 \section{Conclusions and Future Work} % PRESENT TENSE!!!
 \label{sec:conclusion}
-\textbf{TODO:}
-% bullet points of conclusions
-\begin{itemize}
-    \item brielfy repeat the RQs
-    \item metion the the implications of results and tie them back to the RQs
-\end{itemize}
+This study aimed to investigate the relevance of activation functions in smaller-scale language models with approximately 10M parameters, addressing three key research questions. The first question explored whether the choice of activation function impacts the performance of these smaller models. The results indicate that the choice of activation function, including GELU and its predecessors, does not significantly affect performance in context of our experiment setup. The second research question examined the benefits of adding learnable parameters to activation functions. Our findings show that parameterizing activation functions, such as with novel adaptive GELU, Swish, and PReLU does not provide a significant performance improvement over their static counterparts. However, due to comupational constraints, the results are inconclusive and further research is needed to explore solidify the results as some of the results contradict well established papers.
+ 
+The third question assessed whether FFNs using Kolmogorov-Arnold Networks (KAN) outperform traditional MLP networks in smaller models. The KAN models consistently underperformed compared to traditional architectures, suggesting that KAN networks may not be a viable alternative for language modeling at this scale or that the implementation used in this study was not optimal.
+
+In summary, while the choice and complexity of activation functions appear to be less critical for smaller language models, it is premature to conclude their irrelevance. Further research is needed to confirm these results and explore other architectural improvements.

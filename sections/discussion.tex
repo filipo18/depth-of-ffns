@@ -50,12 +50,12 @@ The evaluation pipeline used in this study, BabyLM, primarily focuses on grammat
 
 \subsection{Future work}
 \label{sec:future}
-I hope this research will inspire further studies to give activation functions less attention. Before publishing new activation functions, researchers should conduct multiple runs and perform statistical significance tests to ensure the robustness of their findings. \\ 
+This study should be replicated over additional epochs to verify the findings. The observation that ReLU is not outperformed by GELU is particularly noteworthy and warrants further investigation. It is hoped that this research will inspire more comprehensive studies to critically evaluate the attention given to activation functions. Before introducing new activation functions, researchers should perform multiple runs and conduct statistical significance tests to ensure the robustness and reliability of their results.
 The KAN architecture is a relatively new concept, and the implementation used in this study may not have been optimal. Although we utilized more efficient and optimized implementation as suggested by the original paper \cite{Liu2024}, the training process was less stable compared to baseline models (see Figure \ref{fig:grad-norm}), and the models did not converge as expected. This instability may have impacted the performance of the \textsc{KAN models}, suggesting that future research should investigate this issue further. Despite its potential, this promising direction concerning activation functions and its interpretability benefits were not fully explored in this study due to time constraints.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\columnwidth]{figures/train-grad-norm.png}
-    \caption{Gradient normalization during training of KAN models. The KAN models show higher variance in gradient norms compared to the baseline models. \textbf{ToDo: Fix readability}}
+    \caption{Gradient normalization during training of KAN models. The KAN models show higher variance in gradient norms compared to the baseline models.}
     \label{fig:grad-norm}
 \end{figure}

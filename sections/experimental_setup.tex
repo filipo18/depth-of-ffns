@@ -43,7 +43,7 @@ Since the distribution of the test statistic is not known, we had to choose appr
 Sampling-based tests compensate for the lack of distribution information with resampling, which makes them computationally more expensive. We used bootstrapping as a sampling-based test. It is a resampling method that involves drawing samples with replacements from the original results. These samples are used to approximate the distribution of the statistics. We use that to calculate the means and 95\% confidence interval of BLiMP and GLUE scores for each of the models. We used 10 000 samples for bootstrapping in our experiments. The exact implementation used, is available in the replication package\footnotemark[6].
 
 \subsection{Hardware}
-All the models were trained and evaluated on a single NVIDIA A100 or NVIDIA V100 GPU\footnote{For details, see Table \ref{table:all-results}.} with 4 CPUs and 24GB of memory on DelftBlue cluster \cite{DHPC2024}.
+All the models were trained and evaluated on a single NVIDIA A100 or NVIDIA V100 GPU\footnote{For details, see Table \ref{tab:all-results}.} with 4 CPUs and 24GB of memory on DelftBlue cluster \cite{DHPC2024}.
 
 
 
